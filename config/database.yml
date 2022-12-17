@@ -1,11 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: 55
+
 development:
+  <<: *default
   url: <%= ENV['DATABASE_URL'].gsub('?', '_development?') %>
 
 test:
+  <<: *default
   url: <%= ENV['DATABASE_URL'].gsub('?', '_test?') %>
 
 staging:
+  <<: *default
   url: <%= ENV['DATABASE_URL'].gsub('?', '_staging?') %>
 
 production:
+  <<: *default
   url: <%= ENV['DATABASE_URL'].gsub('?', '_production?') %>

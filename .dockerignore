@@ -20,3 +20,15 @@ public/packs
 public/packs-test
 coverage/
 .env
+.env.*
+!.env.dockerbuild
+.git
+.gitignore
+.byebug_history
+tmp/*
+log/*
+public/system
+Dockerfile*
+docker-compose*
+*.md
+.github

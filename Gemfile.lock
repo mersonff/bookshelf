@@ -281,10 +281,10 @@ GEM
       fugit (~> 1.1, >= 1.1.6)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
-    sidekiq (6.4.2)
+    sidekiq (6.5.5)
       connection_pool (>= 2.2.2)
       rack (~> 2.0)
-      redis (>= 4.2.0)
+      redis (>= 4.5.0)
     sidekiq-scheduler (4.0.3)
       redis (>= 4.2.0)
       rufus-scheduler (~> 3.2)
@@ -324,7 +324,7 @@ DEPENDENCIES
   byebug
   database_cleaner-active_record (~> 2.0.1)
   debug
-  devise_token_auth (~> 1.2.0)
+  devise_token_auth
   dotenv-rails (~> 2.7.6)
   factory_bot_rails (~> 6.2.0)
   faker (~> 2.21.0)
@@ -341,7 +341,7 @@ DEPENDENCIES
   rubocop-rails (~> 2.16, >= 2.16.1)
   rubocop-rspec (~> 2.13, >= 2.13.2)
   shoulda-matchers (~> 5.1.0)
-  sidekiq (~> 6.4.2)
+  sidekiq (~> 6.5.5)
   sidekiq-scheduler
   simplecov
   spring

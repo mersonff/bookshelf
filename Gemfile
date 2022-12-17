@@ -7,7 +7,7 @@ ruby '3.1.2'
 
 gem 'active_storage_validations'
 gem 'bootsnap', require: false
-gem 'devise_token_auth', '~> 1.2.0'
+gem 'devise_token_auth'
 gem 'dotenv-rails', '~> 2.7.6'
 gem 'image_processing', '~> 1.2'
 gem 'jbuilder'
@@ -16,7 +16,7 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.4'
 gem 'redis-rails', '~> 5.0.2'
-gem 'sidekiq', '~> 6.4.2'
+gem 'sidekiq', '~> 6.5.5'
 gem 'sidekiq-scheduler'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'unicorn', '~> 6.1.0'
