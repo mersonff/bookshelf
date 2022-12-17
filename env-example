@@ -1,0 +1,6 @@
+SECRET_TOKEN=your_secret_token
+
+WORKER_PROCESSES=1
+LISTEN_ON=0.0.0.0:8010
+DATABASE_URL=postgresql://bookshelf:bookshelf@postgres:5432/bookshelf?encoding=utf8&pool=5&timeout=5000
+CACHE_URL=redis://redis:6379/0
