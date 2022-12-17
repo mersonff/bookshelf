@@ -5,7 +5,6 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '3.1.2'
 
-gem 'active_storage_validations'
 gem 'bootsnap', require: false
 gem 'devise_token_auth'
 gem 'dotenv-rails', '~> 2.7.6'
