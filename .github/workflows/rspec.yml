@@ -34,8 +34,7 @@ jobs:
           bin/rails db:drop
           bin/rails db:create
           bin/rails db:migrate
-      - name: Start Redis
-        run: redis-server
+
       - name: Run RSpec tests
         run: bundle exec rspec
 
