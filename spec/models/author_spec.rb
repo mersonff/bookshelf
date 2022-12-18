@@ -20,4 +20,7 @@ RSpec.describe Author do
       romance: 6, science_fiction: 7, horror: 8, mystery: 9, thriller: 10, drama: 11
     )
   }
+
+  it_has_behavior_of "like searchable concern", :author, :name
+  it_behaves_like "paginatable concern", :author
 end

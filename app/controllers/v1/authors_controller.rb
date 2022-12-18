@@ -7,7 +7,8 @@ module V1
     # GET /authors
     # GET /authors.json
     def index
-      @authors = Author.all
+      @loading_service = ModelLoadingService.new(Author.all, searchable_params)
+      @loading_service.call
     end
 
     # GET /authors/1
@@ -54,6 +55,10 @@ module V1
     # Only allow a list of trusted parameters through.
     def author_params
       params.require(:author).permit(:name, :writing_gender, :age, :photo)
+    end
+
+    def searchable_params
+      params.permit({ search: :name }, { order: {} }, :page, :length)
     end
   end
 end

@@ -1,6 +1,9 @@
 # frozen_string_literal: true
 
 class Author < ApplicationRecord
+  include LikeSearchable
+  include Paginatable
+
   has_one_attached :photo
 
   enum writing_gender: {
