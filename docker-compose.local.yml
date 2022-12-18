@@ -36,16 +36,14 @@ services:
     env_file:
       - .env
     command: 'bash -c redis-server'
-
-  nginx:
-    container_name: bookshelf-nginx
-    build:
-      context: .
-      dockerfile: ./Dockerfile.nginx
-    links:
-      - bookshelf
+    depends_on: 
+      - postgres
+  
+  mailcatcher:
+    image: yappabe/mailcatcher
     ports:
-      - '8020:8020'
+      - "1025:1025"
+      - "1080:1080"
 
 volumes:
   bookshelf-postgres:

@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  mount_devise_token_auth_for 'User', at: 'auth/v1/user'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  namespace :v1 do
+    get 'home' => 'home#index'
+  end
 end
