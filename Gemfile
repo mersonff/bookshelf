@@ -15,6 +15,8 @@ gem 'puma', '~> 5.0'
 gem 'rack-cors'
 gem 'rails', '~> 7.0.4'
 gem 'sidekiq'
+gem 'redis-rails'
+gem 'redis-store', '~> 1.4.0'
 gem 'sidekiq-scheduler'
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 gem 'unicorn', '~> 6.1.0'
