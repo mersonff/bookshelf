@@ -20,6 +20,7 @@ services:
       - '6379:6379'
     volumes:
       - bookshelf-redis:/var/lib/redis/data
+    command: redis-server
 
   bookshelf:
     container_name: bookshelf-app
@@ -35,7 +36,6 @@ services:
       - '8010:8010'
     env_file:
       - .env
-    command: 'bash -c redis-server'
     depends_on: 
       - postgres
   
