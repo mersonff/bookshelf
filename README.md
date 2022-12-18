@@ -1,24 +1,43 @@
-# README
+# Bookshelf
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Instalando Bookshelf
 
-Things you may want to cover:
+Para instalar o projeto, siga estas etapas:
 
-* Ruby version
+Setando o .env
+```
+copie o arquivo .env-example com o nome .env e modifique onde necessário
+```
 
-* System dependencies
+```
+docker compose -f docker-compose.local.yml up
+```
 
-* Configuration
+## Usando
 
-* Database creation
+No terminal, na pasta raiz do projeto rode o seguinte comando
+```
+./bookshelf-app.sh 
+```
 
-* Database initialization
+## Testes
 
-* How to run the test suite
+No terminal
+```
+rspec
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+## Autenticação
+```
+A API utiliza a gem devise-token-auth, é necessário o uso de alguns headers para acessar as rotas protegidas. Na collection do Insomnia está configurado para que esses headers sejam atualizados automaticamente após a request de sign_in.
+```
 
-* Deployment instructions
+# Docs
+```
+Na pasta raiz do projeto, há os arquivos para a documentação do Swagger e a collection para ser utilizada no Insomnia
+```
 
-* ...
+## OBS
+```
+Pode ser necessário dar permissão de execução para o script.
+```
