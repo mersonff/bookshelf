@@ -1,3 +1,3 @@
 # frozen_string_literal: true
 
-json.partial! 'v1/authors/author', author: @author
+json.partial! 'v1/books/book', book: @book
