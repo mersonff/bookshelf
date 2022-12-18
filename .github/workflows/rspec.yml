@@ -21,7 +21,9 @@ jobs:
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
       redis:
-        image: redis
+        image: redis:alpine
+        ports: ["6379:6379"]
+        options: --entrypoint redis-server
     steps:
       - name: Start Redis
         run: redis-server
