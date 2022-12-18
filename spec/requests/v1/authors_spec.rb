@@ -40,7 +40,6 @@ RSpec.describe 'Authors' do
       let(:author_params) { { author: attributes_for(:author) } }
 
       it 'adds a new author' do
-        byebug
         expect do
           post v1_authors_path, headers: auth_header(user), params: author_params
         end.to change(Author, :count).by(1)
