@@ -6,7 +6,7 @@ on:
 env:
   RAILS_ENV: test
   DATABASE_URL: "postgres://rails:password@localhost:5432/bookshelf_test"
-  REDIS_URL: "redis://localhost:6379/0"
+  REDIS_URL: "redis://redis:6379/0"
   
 jobs:
   rspec:
