@@ -5,6 +5,6 @@ module V1
     include Authenticatable
 
     include SimpleErrorRenderable
-    self.simple_error_partial = "shared/simple_error"
+    self.simple_error_partial = 'shared/simple_error'
   end
 end

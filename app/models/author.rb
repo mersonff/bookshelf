@@ -7,6 +7,8 @@ class Author < ApplicationRecord
 
   has_one_attached :photo
 
+  has_many :books, dependent: :destroy
+
   validates :name, presence: true, length: { minimum: 3 }
   validates :age, presence: true, numericality: { only_integer: true, greater_than: 0 }
   validates :photo, presence: true

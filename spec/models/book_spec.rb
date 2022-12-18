@@ -10,7 +10,7 @@ RSpec.describe Book do
   it { is_expected.to validate_presence_of(:publication_date) }
   it { is_expected.to validate_presence_of(:image) }
   it { is_expected.to validate_presence_of(:writing_gender) }
-  
+
   it { is_expected.to belong_to(:author) }
 
   it { is_expected.to validate_length_of(:description).is_at_least(3) }
@@ -23,6 +23,6 @@ RSpec.describe Book do
     )
   }
 
-  it_has_behavior_of "like searchable concern", :book, :description
-  it_behaves_like "paginatable concern", :book
+  it_has_behavior_of 'like searchable concern', :book, :description
+  it_behaves_like 'paginatable concern', :book
 end

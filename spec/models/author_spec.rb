@@ -14,6 +14,9 @@ RSpec.describe Author do
   it { is_expected.to validate_numericality_of(:age).only_integer }
   it { is_expected.to validate_numericality_of(:age).is_greater_than(0) }
 
+  it { is_expected.to have_one_attached(:photo) }
+  it { is_expected.to have_many(:books).dependent(:destroy) }
+
   it {
     expect(author).to define_enum_for(:writing_gender).with_values(
       fiction: 0, fantasy: 1, non_fiction: 2, poetry: 3, biography: 4, autobiography: 5,
@@ -21,6 +24,6 @@ RSpec.describe Author do
     )
   }
 
-  it_has_behavior_of "like searchable concern", :author, :name
-  it_behaves_like "paginatable concern", :author
+  it_has_behavior_of 'like searchable concern', :author, :name
+  it_behaves_like 'paginatable concern', :author
 end

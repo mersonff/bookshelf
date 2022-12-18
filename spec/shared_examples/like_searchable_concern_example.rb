@@ -1,5 +1,7 @@
-shared_examples "like searchable concern" do |factory_name, field|
-  let!(:search_param) { "Example" }
+# frozen_string_literal: true
+
+shared_examples 'like searchable concern' do |factory_name, field|
+  let!(:search_param) { 'Example' }
   let!(:records_to_find) do
     (0..3).to_a.map { |index| create(factory_name, field => "Example #{index}") }
   end
@@ -12,6 +14,6 @@ shared_examples "like searchable concern" do |factory_name, field|
 
   it "ignores records without expression in #{field}" do
     found_records = described_class.like(field, search_param)
-    expect(found_records.to_a).to_not include(*records_to_ignore)
+    expect(found_records.to_a).not_to include(*records_to_ignore)
   end
 end
