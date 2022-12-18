@@ -29,3 +29,6 @@
 /config/master.key
 .env
 /public
+coverage/*
+coverage/.resultset.json
+coverage/index.html
