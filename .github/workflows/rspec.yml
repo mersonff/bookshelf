@@ -20,6 +20,8 @@ jobs:
           POSTGRES_DB: bookshelf_test
           POSTGRES_USER: rails
           POSTGRES_PASSWORD: password
+      redis:
+        image: redis
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
