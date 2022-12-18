@@ -24,7 +24,7 @@ jobs:
         image: redis
     steps:
       - name: Start Redis
-        run: redis-sever
+        run: redis-server
       - name: Checkout code
         uses: actions/checkout@v3
 
