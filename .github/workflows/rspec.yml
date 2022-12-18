@@ -1,0 +1,47 @@
+name: "RSpec Tests and Simplecov coverage"
+on:
+  pull_request:
+    branches: [ "main" ]
+
+env:
+  RAILS_ENV: test
+  DATABASE_URL: "postgres://rails:password@localhost:5432/bookshelf_test"
+  REDIS_URL: "redis://localhost:6379/0"
+  
+jobs:
+  rspec:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:14-alpine
+        ports:
+          - "5432:5432"
+        env:
+          POSTGRES_DB: bookshelf_test
+          POSTGRES_USER: rails
+          POSTGRES_PASSWORD: password
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Install Ruby and gems
+        uses: ruby/setup-ruby@v1
+        with:
+          bundler-cache: true
+
+      - name: Set up database schema
+        run: |
+          bin/rails db:drop
+          bin/rails db:create
+          bin/rails db:migrate
+
+      - name: Run RSpec tests
+        run: bundle exec rspec
+
+      - name: Check code coverage
+        uses: joshmfrankel/simplecov-check-action@main
+        with:
+          check_job_name: simplecov
+          minimum_suite_coverage: 95
+          minimum_file_coverage: 90
+          github_token: ${{ secrets.GITHUB_TOKEN }}
