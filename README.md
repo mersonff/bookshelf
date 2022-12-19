@@ -37,9 +37,7 @@ A API utiliza a gem devise-token-auth, é necessário o uso de alguns headers pa
 Na pasta raiz do projeto, há os arquivos para a documentação do Swagger e a collection para ser utilizada no Insomnia
 ```
 
-```
 [Docs](https://mersonff.github.io/bookshelf-docs/)
-```
 
 ## OBS
 ```
