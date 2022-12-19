@@ -33,7 +33,7 @@ services:
       - postgres
       - redis
     ports:
-      - '8010:8010'
+      - '3000:3000'
     env_file:
       - .env
     depends_on: 
