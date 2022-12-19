@@ -1,0 +1,483 @@
+openapi: 3.0.3
+info:
+  title: Bookshelf
+  description: |-
+    API para cadastros de livros e autores
+    
+    Links úteis:
+    - [Repositório](https://https://github.com/mersonff/bookshelf)
+  version: 1.0.11
+
+tags:
+  - name: book
+    description: Acesse seus livros
+  - name: author
+    description: Acesse seus autores
+  - name: user
+    description: Autenticação
+paths:
+  /auth/v1/user:
+    post:
+      tags:
+        - user
+      summary: Cria um novo usuário
+      description: Cria um novo usuário
+      requestBody:
+        description: Cria um novo usuário
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserPost'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  
+  /auth/v1/user/sign_in:
+    post:
+      tags:
+        - user
+      summary: Login
+      description: Login
+      requestBody:
+        description: Login
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserLogin'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /auth/v1/user/sign_out:
+    delete:
+      tags:
+        - user
+      summary: Logout
+      description: Logout
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+  
+  /auth/v1/user/password:
+    post:
+      tags:
+        - user
+      summary: Solicitar troca de senha
+      description: Solicitar troca de senha
+      requestBody:
+        description: Solicitar troca de senha
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordRequestChange'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+    
+    put:
+      tags:
+        - user
+      summary: Troca senha de usuário
+      description: Troca senha de usuário
+      requestBody:
+        description: Troca senha de usuário
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordReset'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+
+  /v1/books/{BookId}:
+    put:
+      tags:
+        - book
+      summary: Atualiza um livro
+      description: Atualiza um livro pelo id
+      parameters:
+        - name: BookId
+          in: path
+          description: ID do livro a ser achado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Atualiza um livro existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book' 
+
+    get:
+      tags:
+        - book
+      summary: Ache um livro pelo ID
+      description: Retorna um único livro
+      parameters:
+        - name: BookId
+          in: path
+          description: ID do livro a ser achado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book'
+
+    delete:
+      tags:
+        - book
+      summary: Deleta um livro
+      description: Deleta um livro
+      parameters:
+        - name: BookId
+          in: path
+          description: ID do livro a ser deletado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: no content          
+         
+  /v1/books:
+    post:
+      tags:
+        - book
+      summary: Adiciona um novo livro
+      description: Adiciona um livro
+      requestBody:
+        description: Adiciona um novo livro
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Book'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Book' 
+
+    get:
+      tags:
+        - book
+      summary: Lista todos os livros
+      description: Lista todos os livros cadastrados
+      parameters:
+        - in: query
+          name: search[description]
+          description: Descrição a ser pesquisada
+          required: true
+          schema:
+            type: string
+            example: merso
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Book'
+
+  /v1/authors/{authorId}:
+    put:
+      tags:
+        - author
+      summary: Atualiza um autor
+      description: Atualiza um autor pelo id
+      parameters:
+        - name: authorId
+          in: path
+          description: ID do autor a ser achado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      requestBody:
+        description: Atualiza um autor existente
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author' 
+
+    get:
+      tags:
+        - author
+      summary: Ache um autor pelo ID
+      description: Retorna um único autor
+      parameters:
+        - name: authorId
+          in: path
+          description: ID do autor a ser achado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author'
+
+    delete:
+      tags:
+        - author
+      summary: Deleta um autor
+      description: Deleta um autor
+      parameters:
+        - name: authorId
+          in: path
+          description: ID do autor a ser deletado
+          required: true
+          schema:
+            type: integer
+            format: int64
+      responses:
+        '204':
+          description: no content          
+         
+  /v1/authors:
+    post:
+      tags:
+        - author
+      summary: Adiciona um novo autor
+      description: Adiciona um autor
+      requestBody:
+        description: Adiciona um novo autor
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Author'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Author' 
+
+    get:
+      tags:
+        - author
+      summary: Lista todos os autores
+      description: Lista todos os autores cadastrados
+      parameters:
+        - name: search[name]
+          in: query
+          description: Nome a ser pesquisado
+          schema:
+            type: string
+            example: merso
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items: 
+                  $ref: '#/components/schemas/Author'
+
+components:
+  schemas:
+    Book:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        author_id:
+          type: integer
+          format: int64
+          example: 198772
+        description:
+          type: string
+          example: Game of Thrones
+        publisher:
+          type: string
+          example: Emerson
+        publication_date:
+          type: string
+          format: date
+          example: '2000-03-15'
+        writing_gender:
+          type: string
+          example: fantasy
+          enum:
+            - fiction
+            - fantasy
+            - non_fiction
+            - poetry
+            - biography
+            - autobiography
+            - romance
+            - science_fiction
+            - horror
+            - mystery
+            - thriller
+            - drama
+        image_url:
+          type: string
+          format: url
+          example: http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11a64afc597b06ba230e138f3183c242eb4359e7/product_image.png
+    Author:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        name:
+          type: string
+          example: Emerson
+        age:
+          type: integer
+          format: int64
+          example: 19
+        writing_gender:
+          type: string
+          example: fantasy
+          enum:
+            - fiction
+            - fantasy
+            - non_fiction
+            - poetry
+            - biography
+            - autobiography
+            - romance
+            - science_fiction
+            - horror
+            - mystery
+            - thriller
+            - drama
+        photo_url:
+          type: string
+          format: url
+          example: http://localhost:3000/rails/active_storage/blobs/redirect/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBDQT09IiwiZXhwIjpudWxsLCJwdXIiOiJibG9iX2lkIn19--11a64afc597b06ba230e138f3183c242eb4359e7/product_image.png
+    User:
+      type: object
+      properties:
+        status:
+          type: string
+          example: success
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/UserInfo'
+    UserInfo:
+      type: object
+      properties:
+        id:
+          type: integer
+          format: int64
+          example: 10
+        provider:
+          type: string
+          example: email
+        name:
+          type: string
+          example: Emerson
+        allow_password_change:
+          type: boolean
+          example: false
+        email:
+          type: string
+          example: john@email.com
+    UserPost:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Emerson
+        email:
+          type: string
+          example: john@email.com
+        password:
+          type: string
+          example: '12345'
+        password_confirmation:
+          type: string
+          example: '123456'
+    UserLogin:
+      type: object
+      properties:
+        email:
+          type: string
+          example: mersonsi@gmail.com
+        password:
+          type: string
+          example: '123456'
+    PasswordRequestChange:
+      type: object
+      properties:
+        email:
+          type: string
+          example: mersonsi@gmail.com
+        redirect_url:
+          type: string
+          example: 'localhost:3001/change_it'
+    PasswordReset:
+      type: object
+      properties:
+        reset_password_token:
+          type: string
+          example: 'rugBPEPy4e2iLs3kt3Jx'
+        password: 
+          type: string
+          example: '125458'
+        password_confirmation: 
+          type: string
+          example: '125458'

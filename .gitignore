@@ -35,3 +35,4 @@ coverage/index.html
 Dockerfile
 fly.toml
 lib/tasks/fly.rake
+.byebug_history
