@@ -222,8 +222,8 @@ GEM
       redis-actionpack (>= 5.0, < 6)
       redis-activesupport (>= 5.0, < 6)
       redis-store (>= 1.2, < 2)
-    redis-store (1.4.1)
-      redis (>= 2.2, < 5)
+    redis-store (1.9.1)
+      redis (>= 4, < 5)
     regexp_parser (2.6.1)
     reline (0.3.2)
       io-console (~> 0.5)
@@ -273,10 +273,10 @@ GEM
       fugit (~> 1.1, >= 1.1.6)
     shoulda-matchers (5.1.0)
       activesupport (>= 5.2.0)
-    sidekiq (6.5.5)
-      connection_pool (>= 2.2.2)
+    sidekiq (6.5.8)
+      connection_pool (>= 2.2.5, < 3)
       rack (~> 2.0)
-      redis (>= 4.5.0)
+      redis (>= 4.5.0, < 5)
     sidekiq-scheduler (4.0.3)
       redis (>= 4.2.0)
       rufus-scheduler (~> 3.2)
@@ -327,13 +327,13 @@ DEPENDENCIES
   rack-cors
   rails (~> 7.0.4)
   redis-rails
-  redis-store (~> 1.4.0)
+  redis-store (>= 1.4, < 2)
   rspec-rails (~> 5.1.2)
   rubocop
   rubocop-rails (~> 2.16, >= 2.16.1)
   rubocop-rspec (~> 2.13, >= 2.13.2)
   shoulda-matchers (~> 5.1.0)
-  sidekiq
+  sidekiq (~> 6.5.6)
   sidekiq-scheduler
   simplecov
   spring
