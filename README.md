@@ -38,7 +38,7 @@ Na pasta raiz do projeto, há os arquivos para a documentação do Swagger e a c
 ```
 
 ```
-https://mersonff.github.io/bookshelf-docs/
+[Docs](https://mersonff.github.io/bookshelf-docs/)
 ```
 
 ## OBS
