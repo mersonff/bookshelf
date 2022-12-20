@@ -26,6 +26,7 @@ No terminal, na pasta raiz do projeto rode o seguinte comando
 
 No terminal
 ```
+rails db:create RAILS_ENV=test
 rspec
 ```
 
